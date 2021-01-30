@@ -69,13 +69,13 @@ services:
 
 configs:
   elastic_config:
-    file: ./elk-config/elasticsearch.yml
+    file: ./elk-conf/elasticsearch.yml
   logstash_config:
-    file: ./elk-config/logstash.yml
+    file: ./elk-conf/logstash.yml
   logstash_pipeline:
-    file: ./elk-config/logstash.conf
+    file: ./elk-conf/logstash.conf
   kibana_config:
-    file: ./elk-config/kibana.yml
+    file: ./elk-conf/kibana.yml
 
 networks:
   elk:
