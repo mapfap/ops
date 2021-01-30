@@ -82,7 +82,7 @@ configs:
   kibana_config:
     file: ./elk-conf/kibana.yml
   filebeat_config:
-    file: ./elk-conf/filebeat
+    file: ./elk-conf/filebeat.yml
 
 networks:
   elk:
