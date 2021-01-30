@@ -11,7 +11,7 @@ services:
       - source: elastic_config
         target: /usr/share/elasticsearch/config/elasticsearch.yml
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
       ELASTIC_PASSWORD: changeme
       discovery.type: single-node
       network.publish_host: _eth0_
@@ -33,7 +33,7 @@ services:
       - source: logstash_pipeline
         target: /usr/share/logstash/pipeline/logstash.conf
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
       - elk
     deploy:
@@ -54,13 +54,18 @@ services:
       replicas: 1
 
   filebeat:
-    image: bargenson/filebeat
-    restart: unless-stopped
+    image: docker.elastic.co/beats/filebeat:7.10.2
     volumes:
-     - /var/run/docker.sock:/tmp/docker.sock
+     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+    configs:
+      - source: filebeat_config
+        target: /usr/share/filebeat/filebeat.yml
+    user: root
     environment:
-     - LOGSTASH_HOST=logstash
-     - LOGSTASH_PORT=5044
+     - output.elasticsearch.hosts=["elasticsearch:9200"]
+     - output.elasticsearch.username=elastic
+     - output.elasticsearch.password=changeme
     deploy:
       mode: replicated
       replicas: 1
@@ -76,6 +81,8 @@ configs:
     file: ./elk-conf/logstash.conf
   kibana_config:
     file: ./elk-conf/kibana.yml
+  filebeat_config:
+    file: ./elk-conf/filebeat
 
 networks:
   elk:
