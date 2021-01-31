@@ -1,0 +1,13 @@
+listeners:
+  - name: docker
+config_providers:
+  - name: docker
+    polling: true
+    poll_interval: 1s
+
+apm_config:
+  apm_non_local_traffic: true
+
+jmx_use_container_support: true
+
+logs_enabled: true

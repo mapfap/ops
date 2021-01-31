@@ -7,8 +7,15 @@ services:
      - DD_SITE=datadoghq.com
      - DD_PROCESS_AGENT_ENABLED=true
      - DD_SYSTEM_PROBE_ENABLED=false
+     - DD_LOGS_ENABLED=true
     volumes:
      - /var/run/docker.sock:/var/run/docker.sock
      - /proc/:/host/proc/:ro
      - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
      - /etc/passwd:/etc/passwd:ro
+     - ./datadog-conf/ssh/conf.yaml:/etc/datadog-agent/conf.d/ssh_check.d/conf.yaml:ro
+     - ./datadog-conf/ssh/key:/root/key:ro
+     - ./datadog-conf/datadog.yaml:/etc/datadog-agent/datadog.yaml:ro
+     - ./datadog-conf/nginx/conf.yaml:/etc/datadog-agent/conf.d/nginx.d:ro
+     - /var/log/nginx/access.log:/var/log/nginx/access.log:ro
+     - /var/log/nginx/error.log:/var/log/nginx/error.log:ro

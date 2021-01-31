@@ -1,0 +1,15 @@
+init_config:
+instances:
+  - host: localhost
+    username: ops
+    port: 22
+    sftp_check: true
+    private_key_file: <PRIVATE_KEY_FILE>
+    private_key_type: rsa
+    add_missing_keys: true
+    # tags:
+    #   - <KEY_1>:<VALUE_1>
+    #   - <KEY_2>:<VALUE_2>
+    # service: <SERVICE>
+    # min_collection_interval: 15
+    # empty_default_hostname: false
