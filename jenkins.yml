@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   jenkins:
-    image: jenkins/jenkins:lts-alpine
+    image: jenkins/jenkins:alpine
     privileged: true
     user: root
     ports:
