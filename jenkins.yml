@@ -11,5 +11,10 @@ services:
     container_name: jenkins
     volumes:
       - jenkins_data:/var/jenkins_home
+    deploy:
+      resources:
+        limits:
+          cpus: 0.50
+          memory: 512M
 volumes:
   jenkins_data:
