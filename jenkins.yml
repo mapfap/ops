@@ -9,12 +9,5 @@ services:
       - 50000:50000
     volumes:
       - jenkins_data:/var/jenkins_home
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-    environment:
-      - JAVA_OPTS=-Xmx512M
 volumes:
   jenkins_data:
