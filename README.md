@@ -2,4 +2,4 @@
 Docker Swarm + Traefik + Portrainer + Jenkins
 
 ## Example
-docker stack deploy -c jenkins.yml
+docker stack deploy -c jenkins.yml jenkins
