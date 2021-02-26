@@ -8,13 +8,12 @@ services:
     ports:
       - 8080:8080
       - 50000:50000
-    container_name: jenkins
     volumes:
       - jenkins_data:/var/jenkins_home
     deploy:
       resources:
         limits:
-          cpus: 0.50
-          memory: 512M
+          cpus: '0.5'
+          memory: 256M
 volumes:
   jenkins_data:
