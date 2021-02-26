@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  app:
+    image: app:latest
+    ports:
+      - 8082:8080
+    deploy:
+      mode: replicated
+      replicas: 2
