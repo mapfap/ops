@@ -14,7 +14,7 @@ services:
         limits:
           cpus: '0.5'
           memory: 256M
-    environments:
+    environment:
       - JAVA_OPTS='-Xmx256M'
 volumes:
   jenkins_data:
